@@ -1,3 +1,5 @@
+source ~/.zplug/init.zsh
+
 zplug "plugins/git",   from:oh-my-zsh
 zplug "plugins/kubectl",   from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
