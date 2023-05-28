@@ -6,7 +6,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 export EDITOR=nvim
 export GOBIN=$HOME/.local/bin
-PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 unsetopt beep extendedglob nomatch
 bindkey -e
@@ -43,6 +45,9 @@ zplug "zsh-users/zsh-completions", defer:2
 zplug reegnz/jq-zsh-plugin
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
+
+source <(kubectl completion zsh)
+source <(helm completion zsh)
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
