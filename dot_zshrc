@@ -48,6 +48,7 @@ zplug romkatv/powerlevel10k, as:theme, depth:1
 
 source <(kubectl completion zsh)
 source <(helm completion zsh)
+source "$HOME/.cargo/env"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
