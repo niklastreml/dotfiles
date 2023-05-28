@@ -5,6 +5,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 export EDITOR=nvim
+PATH=$PATH:$HOME/.local/bin
+
 unsetopt beep extendedglob nomatch
 bindkey -e
 
