@@ -1,7 +1,23 @@
+# zsh-newuser-install
+export LANG=C.UTF-8
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+export EDITOR=nvim
+unsetopt beep extendedglob nomatch
+bindkey -e
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^H" backward-kill-word
+bindkey "5~" kill-word
+bindkey "^[[3~" delete-char
+# end zsh-newuser-install
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-export LANG=en_US.UTF-8
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -11,8 +27,18 @@ source ~/.zplug/init.zsh
 
 zplug "plugins/git",   from:oh-my-zsh
 zplug "plugins/kubectl",   from:oh-my-zsh
+zplug "plugins/helm",   from:oh-my-zsh
+zplug "plugins/command-not-found",   from:oh-my-zsh
+zplug "plugins/docker",   from:oh-my-zsh
+zplug "plugins/docker-compose",   from:oh-my-zsh
+zplug "plugins/dotenv",   from:oh-my-zsh
+zplug "plugins/rust",   from:oh-my-zsh
+zplug "plugins/jsontools",   from:oh-my-zsh
 zplug "plugins/asdf",   from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions", defer:2
+zplug reegnz/jq-zsh-plugin
+
 zplug romkatv/powerlevel10k, as:theme, depth:1
 
 if ! zplug check --verbose; then
