@@ -16,4 +16,8 @@ return {
       require('mini.animate').setup()
     end
   },
+  {
+    "wakatime/vim-wakatime",
+    lazy = false,
+  }
 }
