@@ -19,5 +19,8 @@ return {
   {
     "wakatime/vim-wakatime",
     lazy = false,
+  },
+  {
+    "APZelos/blamer.nvim"
   }
 }
