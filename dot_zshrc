@@ -50,6 +50,11 @@ source <(kubectl completion zsh)
 source <(helm completion zsh)
 source "$HOME/.cargo/env"
 
+FILE=$HOME/.env
+if [ -f "$FILE" ]; then
+    source $FILE
+fi
+
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
