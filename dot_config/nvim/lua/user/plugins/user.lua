@@ -21,6 +21,7 @@ return {
     lazy = false,
   },
   {
-    "APZelos/blamer.nvim"
+    "APZelos/blamer.nvim",
+    lazy = false,
   }
 }
