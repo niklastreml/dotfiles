@@ -26,4 +26,31 @@ return {
     "towolf/vim-helm",
     lazy = false,
   },
+  {
+    "zbirenbaum/copilot.lua",
+    lazy = false,
+    config = function()
+      vim.g.copilot_proxy = os.getenv "HTTP_PROXY"
+      require("copilot").setup {
+        panel = {
+          enabled = true,
+          auto_refresh = true,
+          keymap = {
+            open = "<Leader-a><p>",
+          },
+        },
+        suggestion = {
+          enabled = true,
+          autotrigger = true,
+          keymap = {
+            accept = "<Leader-a><CR>",
+          },
+        },
+        filetypes = {
+          yaml = true,
+          markdown = true,
+        },
+      }
+    end,
+  },
 }

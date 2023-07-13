@@ -5,6 +5,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 export EDITOR=nvim
+
 export GOBIN=$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/bin
@@ -72,6 +73,7 @@ fi
 alias ls='exa'
 alias vim='nvim'
 alias ll='exa -lah --icons'
+alias tree='exa -lah --icons --tree'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
