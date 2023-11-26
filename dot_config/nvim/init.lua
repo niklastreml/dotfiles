@@ -44,6 +44,17 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.relativenumber = true
+vim.opt.scrolloff = 25
+vim.opt.tabstop = 4
+
+-- setup extra filetypes
+vim.filetype.add({
+ extension = {
+  templ = "templ",
+ },
+})
+
+
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
@@ -74,7 +85,16 @@ require('lazy').setup({
   'tpope/vim-fugitive',
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  -- 'tpope/vim-sleuth',
+
+
+  {
+    'm4xshen/autoclose.nvim',
+    config = function()
+      require("autoclose").setup()
+    end
+  },
+
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
