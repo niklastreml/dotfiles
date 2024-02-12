@@ -46,12 +46,15 @@ vim.g.maplocalleader = ' '
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 25
 vim.opt.tabstop = 4
+vim.opt.softtabstop = 0
+vim.opt.shiftwidth = 0
+vim.opt.smarttab = true
 
 -- setup extra filetypes
 vim.filetype.add({
- extension = {
-  templ = "templ",
- },
+  extension = {
+    templ = "templ",
+  },
 })
 
 
@@ -71,6 +74,14 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
+
+local nmap = function(keys, func, desc)
+  if desc then
+    desc = 'LSP: ' .. desc
+  end
+
+  vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+end
 
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
@@ -115,6 +126,7 @@ require('lazy').setup({
     },
   },
   'tpope/vim-surround',
+  'towolf/vim-helm',
   {
     'mfussenegger/nvim-dap',
     enabled = vim.fn.has "win32" == 0,
@@ -133,6 +145,18 @@ require('lazy').setup({
           dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
           dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
           dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
+          nmap("<leader>dc", dap.continue, "Continue")
+          nmap("<leader>db", dap.toggle_breakpoint, "Toggle breakpoint")
+          nmap("<leader>dr", dap.repl.open, "Open REPL")
+          nmap("<leader>ds", dap.step_over, "Step over")
+          nmap("<leader>di", dap.step_into, "Step into")
+          nmap("<leader>do", dap.step_out, "Step out")
+          nmap("<leader>dT", dap.terminate, "Terminate")
+          nmap("<leader>dC", function()
+              dap.clear_breakpoints()
+              require("notify")("Breakpoints cleared", "warn")
+            end, "Clear breakpoints")
+
           dapui.setup(opts)
         end
       },
@@ -147,6 +171,16 @@ require('lazy').setup({
           })
         end
       },
+      {
+        "github/copilot.vim",
+        config = function()
+          vim.keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', {
+            expr = true,
+            replace_keycodes = false
+          })
+          vim.g.copilot_no_tab_map = true
+        end
+      }
     },
   },
 
@@ -283,7 +317,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -560,7 +594,27 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {
+    templateExtensions = {".tmpl"},
+  },
+  html = {
+    filetypes = { 'html', 'twig', 'hbs', 'templ' },
+  },
+  htmx = {
+    filetypes = { 'html', 'templ' },
+  },
+  emmet_ls = {
+    filetypes = { 'html', 'templ' },
+  },
+  tailwindcss = {
+    filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+    init_options = {
+      userLanguages = {
+        astro = "html",
+        templ = "html",
+      },
+    },
+  },
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
@@ -597,6 +651,7 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+      init_options = (servers[server_name] or {}).init_options,
     }
   end,
 }
