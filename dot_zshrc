@@ -34,7 +34,7 @@ bindkey "^[[3~" delete-char
 sourceIfExists "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
 # This should error if the file does not exist
-source ~/.zplug/init.zsh
+source $ZPLUG_HOME/init.zsh
 
 zplug "plugins/autojump",   from:oh-my-zsh
 zplug "plugins/git",   from:oh-my-zsh
