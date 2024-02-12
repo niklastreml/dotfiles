@@ -1,5 +1,27 @@
 [init]
     defaultBranch = main
+
+
+[includeIf "hasconfig:remote.*.url:git@github.com*/**"]
+    path = .gitconfig-personal
+
+[includeIf "hasconfig:remote.*.url:git@gitlab.devops.telekom.de*/**"]
+    path = .gitconfig-work
+
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+    path = .gitconfig-personal
+
+[includeIf "hasconfig:remote.*.url:https://gitlab.devops.telekom.de/**"]
+    path = .gitconfig-work
+
+[diff]
+	tool = nvimdiff
+
+[gpg]
+	format = ssh
+
 [user]
-    email = treml.niklas@gmail.com
-    name = Niklas Treml
+	signingkey = ~/.ssh/id_rsa.pub
+
+[commit]
+	gpgsign = true
