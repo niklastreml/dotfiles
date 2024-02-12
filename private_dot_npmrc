@@ -1,3 +1,0 @@
-proxy=http://10.91.6.12:443/
-https-proxy=http://10.91.6.12:443/
-prefix=~/.local/
