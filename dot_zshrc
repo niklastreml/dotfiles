@@ -4,6 +4,10 @@ export LANG=C.UTF-8
 sourceIfExists () {
 	test -f $1 && source $1
 }
+sourceIfExists $HOME/.env
+
+# This should error if the file does not exist
+source $ZPLUG_HOME/init.zsh
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -15,6 +19,8 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 unsetopt beep extendedglob nomatch
 bindkey -e
@@ -33,8 +39,6 @@ bindkey "^[[3~" delete-char
   
 sourceIfExists "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
-# This should error if the file does not exist
-source $ZPLUG_HOME/init.zsh
 
 zplug "plugins/autojump",   from:oh-my-zsh
 zplug "plugins/git",   from:oh-my-zsh
@@ -57,7 +61,6 @@ source <(helm completion zsh)
 source <(gh completion -s zsh)
 source "$HOME/.cargo/env"
 
-sourceIfExists $HOME/.env
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -104,3 +107,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
