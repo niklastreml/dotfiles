@@ -49,6 +49,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 0
 vim.opt.shiftwidth = 0
 vim.opt.smarttab = true
+vim.opt.conceallevel = 1
 
 -- setup extra filetypes
 vim.filetype.add({
@@ -128,6 +129,39 @@ require('lazy').setup({
   'tpope/vim-surround',
   'towolf/vim-helm',
   {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown",
+    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+    -- event = {
+    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+    --   "BufReadPre path/to/my-vault/**.md",
+    --   "BufNewFile path/to/my-vault/**.md",
+    -- },
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+
+      -- see below for full list of optional dependencies 👇
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "internal",
+          path = "~/code/docs/internal",
+        },
+        {
+          name = "personal",
+          path = "~/code/docs/personal",
+        },
+      },
+
+      -- see below for full list of options 👇
+    },
+  },
+  {
     'mfussenegger/nvim-dap',
     enabled = vim.fn.has "win32" == 0,
     dependencies = {
@@ -153,9 +187,9 @@ require('lazy').setup({
           nmap("<leader>do", dap.step_out, "Step out")
           nmap("<leader>dT", dap.terminate, "Terminate")
           nmap("<leader>dC", function()
-              dap.clear_breakpoints()
-              require("notify")("Breakpoints cleared", "warn")
-            end, "Clear breakpoints")
+            dap.clear_breakpoints()
+            require("notify")("Breakpoints cleared", "warn")
+          end, "Clear breakpoints")
 
           dapui.setup(opts)
         end
@@ -595,7 +629,7 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   gopls = {
-    templateExtensions = {".tmpl"},
+    templateExtensions = { ".tmpl" },
   },
   html = {
     filetypes = { 'html', 'twig', 'hbs', 'templ' },
