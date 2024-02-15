@@ -50,6 +50,7 @@ vim.opt.softtabstop = 0
 vim.opt.shiftwidth = 0
 vim.opt.smarttab = true
 vim.opt.conceallevel = 1
+vim.opt.linebreak = true
 
 -- setup extra filetypes
 vim.filetype.add({
@@ -83,6 +84,11 @@ local nmap = function(keys, func, desc)
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
 end
+
+-- extra keybinds
+
+-- bind rexplore to <leader>e
+vim.keymap.set('n', '<leader>e', '<cmd>Explore<CR>', { desc = 'Open [E]xplorer' })
 
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
@@ -184,7 +190,7 @@ require('lazy').setup({
             nmap("<leader>ha", mark.add_file, "[A]dd file to harpoon")
             nmap("<leader>hn", ui.nav_next, "[N]ext file in harpoon")
             nmap("<leader>hp", ui.nav_prev, "[P]revious file in harpoon")
-            nmap("<leader>hu", ui.toggle_quick_menu, "Toggle harpoon [U]I ")
+            nmap("<leader>hh", ui.toggle_quick_menu, "Toggle harpoon [U]I ")
         end,
     },
     {
