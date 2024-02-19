@@ -1,7 +1,6 @@
 [init]
     defaultBranch = main
 
-
 [includeIf "hasconfig:remote.*.url:git@github.com*/**"]
     path = .gitconfig-personal
 

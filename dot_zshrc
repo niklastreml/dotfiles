@@ -6,8 +6,6 @@ sourceIfExists () {
 }
 sourceIfExists $HOME/.env
 
-# This should error if the file does not exist
-source $ZPLUG_HOME/init.zsh
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -21,6 +19,9 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# This should error if the file does not exist
+source $ZPLUG_HOME/init.zsh
 
 unsetopt beep extendedglob nomatch
 bindkey -e
