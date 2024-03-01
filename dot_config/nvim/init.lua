@@ -105,6 +105,12 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   -- 'tpope/vim-sleuth',
 
+  {
+    'APZelos/blamer.nvim',
+    config = function ()
+      vim.g.blamer_enabled = true
+    end
+  },
 
   {
     'm4xshen/autoclose.nvim',
