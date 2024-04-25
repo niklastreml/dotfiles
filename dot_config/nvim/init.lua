@@ -107,7 +107,7 @@ require('lazy').setup({
 
   {
     'APZelos/blamer.nvim',
-    config = function ()
+    config = function()
       vim.g.blamer_enabled = true
     end
   },
@@ -299,6 +299,16 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',  opts = {} },
+  -- shows todos
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
