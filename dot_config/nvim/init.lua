@@ -307,7 +307,11 @@ require('lazy').setup({
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
-    }
+    },
+    config = function()
+      require("todo-comments").setup()
+      vim.keymap.set('n', '<leader>ft', "<cmd>TodoTelescope<CR>", { desc = '[F]ind [T]odos' })
+    end,
   },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
