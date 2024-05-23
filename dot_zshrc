@@ -39,6 +39,7 @@ bindkey "^[[3~" delete-char
 
   
 sourceIfExists "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+sourceIfExists "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
 zplug "plugins/autojump",   from:oh-my-zsh
@@ -111,3 +112,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
