@@ -1,0 +1,10 @@
+# Description: Run a command silently in the background
+
+if [ $# -eq 0 ]; then
+	echo "Usage: silent <command>"
+	exit 1
+fi
+
+$@ > /dev/null 2>&1 &
+echo "PID: $!"
+
