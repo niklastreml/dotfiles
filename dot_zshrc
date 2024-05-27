@@ -7,6 +7,7 @@ sourceIfExists () {
 sourceIfExists $HOME/.env
 
 
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -20,6 +21,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(fzf --zsh)"
 
 # This should error if the file does not exist
 source $ZPLUG_HOME/init.zsh
@@ -53,9 +55,11 @@ zplug "plugins/docker-compose",   from:oh-my-zsh
 zplug "plugins/dotenv",   from:oh-my-zsh
 zplug "plugins/jsontools",   from:oh-my-zsh
 zplug "plugins/asdf",   from:oh-my-zsh
+zplug "plugins/fzf",   from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions", defer:2
 zplug reegnz/jq-zsh-plugin
+zplug "Aloxaf/fzf-tab"
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
 
@@ -77,6 +81,8 @@ zplug load
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   # exec tmux
 fi
+
+enable-fzf-tab
 
 if  command -v eza &> /dev/null
 then
