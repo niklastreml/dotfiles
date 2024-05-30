@@ -4,7 +4,9 @@ export LANG=C.UTF-8
 sourceIfExists () {
 	test -f $1 && source $1
 }
+
 sourceIfExists $HOME/.env
+
 
 
 
@@ -36,14 +38,6 @@ bindkey "5~" kill-word
 bindkey "^[[3~" delete-char
 # end zsh-newuser-install
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-
-  
-sourceIfExists "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-sourceIfExists "$HOME/.sdkman/bin/sdkman-init.sh"
-
 
 zplug "plugins/autojump",   from:oh-my-zsh
 zplug "plugins/git",   from:oh-my-zsh
@@ -56,6 +50,7 @@ zplug "plugins/dotenv",   from:oh-my-zsh
 zplug "plugins/jsontools",   from:oh-my-zsh
 zplug "plugins/asdf",   from:oh-my-zsh
 zplug "plugins/fzf",   from:oh-my-zsh
+zplug "plugins/gcloud",   from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions", defer:2
 zplug reegnz/jq-zsh-plugin
@@ -75,6 +70,12 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+sourceIfExists "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+sourceIfExists "$HOME/.sdkman/bin/sdkman-init.sh"
 
 zplug load
 
