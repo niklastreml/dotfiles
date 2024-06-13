@@ -757,14 +757,15 @@ local servers = {
     filetypes = { 'html', 'templ' },
   },
   emmet_ls = {
-    filetypes = { 'html', 'templ' },
+    filetypes = { 'html', 'templ', 'heex' },
   },
   tailwindcss = {
-    filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+    filetypes = { "templ", "astro", "javascript", "typescript", "react", "heex" },
     init_options = {
       userLanguages = {
         astro = "html",
         templ = "html",
+        heex  = "html",
       },
     },
   },
