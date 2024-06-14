@@ -174,6 +174,16 @@ require('lazy').setup({
     },
   },
   {
+    "kcl-lang/kcl.nvim",
+    init = function()
+      vim.api.nvim_command([[autocmd Bufread,BufNewFile *.k set filetype=kcl]])
+    end,
+
+    ft = {
+      "kcl",
+    }
+  },
+  {
     'nvimdev/hlsearch.nvim',
     event = 'BufRead',
     config = function()
