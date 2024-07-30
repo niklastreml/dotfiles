@@ -42,7 +42,6 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 25
 vim.opt.tabstop = 4
@@ -511,7 +510,7 @@ vim.o.termguicolors = true
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -691,12 +690,18 @@ local on_attach = function(_, bufnr)
     if desc then
       desc = 'LSP: ' .. desc
     end
-
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+  local vmap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
+    vim.keymap.set('v', keys, func, { buffer = bufnr, desc = desc })
   end
 
   nmap('<leader>lr', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
+  vmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
   nmap('<leader>lf', vim.lsp.buf.format, '[F]ormat')
   nmap('<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', '[I]mplementation')
   nmap('<leader>lc', vim.lsp.buf.incoming_calls, 'Incoming [C]alls')
