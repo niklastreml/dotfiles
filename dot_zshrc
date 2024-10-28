@@ -13,6 +13,11 @@ sourceIfExists $HOME/.env
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+
+if  command -v nix &> /dev/null; then
+	source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
+
 export EDITOR=nvim
 
 export GOBIN=$HOME/.local/bin
