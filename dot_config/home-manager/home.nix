@@ -44,6 +44,8 @@
 	gh
 	git
 	go
+	zig
+	delve
 	helm
 	hey
 	k9s
@@ -58,6 +60,7 @@
 	curl 
 	git-town
 	devbox
+	feh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
