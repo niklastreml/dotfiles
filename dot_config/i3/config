@@ -107,7 +107,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -225,4 +225,6 @@ client.background       $base07
 
 exec_always feh --bg-fill $HOME/Pictures/wallpaper.jpg
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
+exec --no-startup-id i3-msg 'workspace $ws1; exec x-www-browser'
+exec --no-startup-id i3-msg 'workspace $ws2; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace $ws3; exec i3-sensible-terminal --hold -e btop'

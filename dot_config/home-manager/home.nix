@@ -37,6 +37,7 @@
 	tmux
 	kubectl
 	gcc
+	cmake
 	autojump
 	bat
 	chezmoi
