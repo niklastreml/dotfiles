@@ -51,7 +51,8 @@
 	hey
 	k9s
 	kind
-	krew
+    krew
+    brave
 	# neovim
 	ripgrep
 	rustup
@@ -62,6 +63,8 @@
 	git-town
 	devbox
 	feh
+	btop
+	polybar
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -107,6 +110,7 @@
 	vimAlias = true;
 	vimdiffAlias = true;
   };
+
 
   home.sessionVariables = {
     # EDITOR = "nvim";
