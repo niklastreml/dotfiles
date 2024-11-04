@@ -47,7 +47,7 @@
 	go
 	zig
 	delve
-	helm
+	kubernetes-helm
 	hey
 	k9s
 	kind
