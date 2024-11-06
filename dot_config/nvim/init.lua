@@ -44,12 +44,20 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 25
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 0
-vim.opt.shiftwidth = 0
+
+
+-- spaces > \t
+vim.opt.shiftwidth = 4
 vim.opt.smarttab = true
+vim.opt.expandtab = true
+-- make \t tabs superwide so they are easy to see
+vim.opt.tabstop = 8
+vim.opt.softtabstop = 0
+
 vim.opt.conceallevel = 1
 vim.opt.linebreak = true
+
+vim.opt.colorcolumn = "100"
 
 -- setup extra filetypes
 vim.filetype.add({
