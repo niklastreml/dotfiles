@@ -55,6 +55,7 @@
 	hey
 	k9s
 	kind
+        zk
     krew
     brave
 	# neovim

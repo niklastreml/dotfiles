@@ -170,7 +170,7 @@ dead-link = "error"
 # Here are a few aliases to get you started.
 
 # Shortcut to a command.
-ls = "zk list $@"
+ls = "zk list $@ -f oneline"
 
 # Default flags for an existing command.
 # list = "zk list --quiet $@"
@@ -199,6 +199,10 @@ ls = "zk list $@"
 conf = '$EDITOR "$HOME/.config/zk/config.toml"'
 e = "zk edit -i"
 d = 'zk new --no-input "$ZK_NOTEBOOK_DIR/journal/daily"'
+update = 'zk sync && git add . && git commit -m "zk backup" && echo "Pushing local changes" && git push'
+backup = 'zk update'
+u = 'zk update'
+sync = 'echo "Getting latest Notes..." && git pull'
 
 [group.daily]
 paths = ["journal/daily"]
