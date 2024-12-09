@@ -56,8 +56,8 @@
 	k9s
 	kind
         zk
-    krew
-    brave
+        krew
+        brave
 	# neovim
 	ripgrep
 	rustup
@@ -71,6 +71,7 @@
 	btop
 	polybar
 	brightnessctl
+        odin
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
