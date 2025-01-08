@@ -254,8 +254,8 @@ require('lazy').setup({
     "rcarriga/nvim-dap-ui",
     opts = { floating = { border = "rounded" } },
     dependencies = {
-      { 'mfussenegger/nvim-dap' }
-
+      { 'mfussenegger/nvim-dap' },
+      { "nvim-neotest/nvim-nio" },
     },
     config = function(_, opts)
       local dap, dapui = require "dap", require "dapui"
@@ -403,6 +403,8 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+  { "echasnovski/mini.icons" },
+  { "nvim-tree/nvim-web-devicons" },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -884,5 +886,7 @@ cmp.setup {
   },
 }
 
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
