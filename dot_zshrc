@@ -102,7 +102,7 @@ enable-fzf-tab
 if  command -v eza &> /dev/null
 then
 		alias ls='eza'
-		alias ll='eza -lah --icons'
+		alias ll='eza -lah --icons always --git'
 		alias tree='eza -lah --icons --tree'
 fi
 
