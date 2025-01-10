@@ -111,6 +111,7 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   -- 'tpope/vim-sleuth',
+  { 'wakatime/vim-wakatime', lazy = false },
 
   {
     'APZelos/blamer.nvim',
