@@ -115,6 +115,22 @@ then
 		alias vim='nvim'
 fi
 
+
+diffyaml ()
+{
+    # check if number of args is correct
+    # otherwise print usage
+    # or print usage if flag -h is passed
+    if [ "$#" -ne 2 ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+        echo "Diff two yaml files"
+        echo "Usage: diffyaml <file1> <file2>"
+        echo "  --help, -h: Print this help message"
+        return 1
+    fi
+    diff --color <(yq -P 'sort_keys(..)' -o=props $1) <(yq -P 'sort_keys(..)' -o=props $2)
+}
+
+
 alias gdt='git difftool'
 
 
