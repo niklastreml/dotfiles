@@ -1,0 +1,9 @@
+[user]
+	name = {{ .git.name | quote }}
+	email = {{ .git.workemail | quote }}
+[git-town]
+        gitlab-token = {{ .gitlab.token | quote}}
+        default-branch-type = "prototype"
+        main-branch = "main"
+        hosting-platform = "gitlab"
+        hosting-origin-hostname = {{ .gitlab.host | quote }}

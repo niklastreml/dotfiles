@@ -2,21 +2,21 @@
     defaultBranch = main
 
 [user]
-	signingkey = ~/.ssh/id_rsa.pub
-	name = Niklas Treml
+	signingkey = {{ .ssh.pubkey }}
+	name = {{ .git.name }}
 [include]
     path = .gitconfig-default
 
 [includeIf "hasconfig:remote.*.url:git@github.com*/**"]
     path = .gitconfig-personal
 
-[includeIf "hasconfig:remote.*.url:git@gitlab.devops.telekom.de*/**"]
+[includeIf "hasconfig:remote.*.url:git@{{ .gitlab.host }}*/**"]
     path = .gitconfig-work
 
 [includeIf "hasconfig:remote.*.url:https://github.com/**"]
     path = .gitconfig-personal
 
-[includeIf "hasconfig:remote.*.url:https://gitlab.devops.telekom.de/**"]
+[includeIf "hasconfig:remote.*.url:https://{{ .gitlab.host }}/**"]
     path = .gitconfig-work
 
 
@@ -25,7 +25,6 @@
 
 [gpg]
 	format = ssh
-
 
 [commit]
 	gpgsign = true

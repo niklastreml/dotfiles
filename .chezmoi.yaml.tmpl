@@ -1,0 +1,10 @@
+data:
+    git:
+        name: {{ promptStringOnce . "git.name" "Git name" | quote }}
+        personalemail: {{  promptStringOnce . "git.personalemail" "Git personal email" | quote  }}
+        workemail: {{  promptStringOnce . "git.workemail" "Git work email" | quote  }}
+    gitlab:
+        host: {{  promptStringOnce . "git.gitlab.host" "Gitlab Host" | quote  }}
+        token: {{  promptStringOnce . "git.gitlab.token" "Gitlab Token" | quote  }}
+    ssh:
+        pubkey: {{  promptStringOnce . "ssh.pubkey" "SSH Public key location" | quote  }} 
