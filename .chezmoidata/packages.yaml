@@ -1,6 +1,10 @@
 packages:
   linux:
     shellscripts:
+      - name: prepare
+        steps:
+          - mkdir -p $HOME/.local/bin
+          - mkdir -p $HOME/.local/share
       - name: kubectl
         steps:
           - KUBECTL_VERSION=v1.31.0
@@ -77,6 +81,8 @@ packages:
     flatpak: []
     # packages that have the same name in all package managers
     common:
+      - unzip
+      - openssl
       - make
       - cmake
       - autojump
