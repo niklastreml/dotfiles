@@ -44,9 +44,13 @@ echo "Installing shellscript packages"
 }
 
 
+folder=$(mktemp -t -d tmp.{{ .name }}-install.XXXXX)
+cd $folder
 {{$func}}
 echo "Returning to working directory"
 cd $curwd
+rm -rf $folder
+unset folder
 
 {{ end -}}
 
