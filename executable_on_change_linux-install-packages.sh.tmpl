@@ -29,6 +29,8 @@ echo "Installing native packages"
 
 if command -v apt-get > /dev/null; then
     installApt $aptPackages $commonPackages
+elif command -v dnf > /dev/null; then
+    installDnf $dnfPackages $commonPackages
 fi
 
 echo "Installing shellscript packages"
