@@ -5,6 +5,9 @@ packages:
         steps:
           - mkdir -p $HOME/.local/bin
           - mkdir -p $HOME/.local/share
+      - name: zplug
+        steps:
+          - curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
       - name: kubectl
         steps:
           - KUBECTL_VERSION=v1.31.0
