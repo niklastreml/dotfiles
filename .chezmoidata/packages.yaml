@@ -42,7 +42,7 @@ packages:
       - name: gh
         steps:
           - GH_VERSION=2.65.0
-          - curl -Lo gh.tar.gz "https://github.com/cli/cli/releases/download/v$GH_VERSION/gh_$GH_VERSION_linux_amd64.tar.gz"
+          - curl -Lo gh.tar.gz "https://github.com/cli/cli/releases/download/v$GH_VERSION/gh_$GH_VERSION\_linux_amd64.tar.gz"
           - tar xvzf gh.tar.gz
           - cp gh ~/.local/bin/gh
       - name: odin
