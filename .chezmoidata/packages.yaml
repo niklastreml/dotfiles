@@ -79,7 +79,8 @@ packages:
       - mc
       - get-all
       - view-secret
-    apt: []
+    apt: 
+      - bashtop
     dnf: []
     flatpak: []
     # packages that have the same name in all package managers
@@ -98,4 +99,3 @@ packages:
       - tmux
       - fzf
       - bat
-      - bashtop
