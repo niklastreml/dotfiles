@@ -38,38 +38,15 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-	tmux
-	kubectl
-	cmake
-	autojump
-	bat
-	fzf
-	gh
-	git
-	go
 	zig
-	delve
-	kubernetes-helm
-	hey
-	k9s
-	kind
         zk
-        krew
         brave
-	# neovim
-	ripgrep
-	rustup
 	pnpm
 	nodejs_22
-	eza
-	curl 
-	git-town
 	devbox
 	feh
-	btop
 	polybar
 	brightnessctl
-        odin
         seer
   ];
 

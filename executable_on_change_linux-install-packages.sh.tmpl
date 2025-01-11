@@ -1,0 +1,64 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+installApt() {
+    packages="$@"
+
+    sudo add-apt-repository ppa:bashtop-monitor/bashtop
+    echo "Installing packages with apt-get: $packages"
+    sudo apt-get update
+    sudo apt-get install $packages
+}
+
+installDnf() {
+    packages="$@"
+
+    echo "Installing packages with dnf: $packages"
+    sudo dnf install $packages
+}
+
+curwd=$(pwd)
+commonPackages="{{ range .packages.linux.common -}}{{ . }} {{ end -}}"
+
+
+krewPackages="{{ range .packages.linux.krew -}}{{ . }} {{ end -}}"
+aptPackages="{{ range .packages.linux.apt -}}{{ . }} {{ end -}}"
+dnfPackages="{{ range .packages.linux.dnf -}}{{ . }} {{ end -}}"
+
+echo "Installing native packages"
+
+if command -v apt-get > /dev/null; then
+    installApt $aptPackages $commonPackages
+fi
+
+echo "Installing shellscript packages"
+{{ range .packages.linux.shellscripts -}}
+{{$func := cat "install_" .name | nospace}}
+{{$func}} () {
+    echo "Installing {{ .name }}"
+    {{ range .steps -}}
+    {{ . }}
+    {{ end}}
+}
+
+
+{{$func}}
+echo "Returning to working directory"
+cd $curwd
+
+{{ end -}}
+
+echo "Installing krew plugins"
+kubectl krew install $krewPackages
+
+echo "Building go binaries from source"
+{{ range .packages.linux.goSrc -}}
+echo "Building {{.}}"
+go install {{.}}
+{{ end }}
+echo "Building rust binaries from source"
+{{ range .packages.linux.rustSrc -}}
+echo "Building {{.}}"
+cargo install {{.}}
+{{ end -}}
+{{ end -}}
