@@ -43,8 +43,9 @@ packages:
         steps:
           - GH_VERSION=2.65.0
           - curl -Lo gh.tar.gz "https://github.com/cli/cli/releases/download/v$GH_VERSION/gh_$GH_VERSION\_linux_amd64.tar.gz"
-          - tar xvzf gh.tar.gz
-          - cp gh ~/.local/bin/gh
+          - mkdir output
+          - tar xvzf gh.tar.gz -C output --strip-components=1
+          - cp output/bin/gh $HOME/.local/bin/gh
       - name: odin
         steps:
           - ODIN_VERSION=dev-2025-01
