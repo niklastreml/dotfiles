@@ -25,7 +25,7 @@ export GOBIN=$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.local/go/bin
+export PATH=$PATH:/usr/local/go/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
@@ -49,6 +49,12 @@ bindkey "^H" backward-kill-word
 bindkey "5~" kill-word
 bindkey "^[[3~" delete-char
 # end zsh-newuser-install
+#
+
+# case insensitive matches
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+
 
 
 zplug "plugins/autojump",   from:oh-my-zsh
@@ -114,22 +120,6 @@ if  command -v nvim &> /dev/null
 then
 		alias vim='nvim'
 fi
-
-
-diffyaml ()
-{
-    # check if number of args is correct
-    # otherwise print usage
-    # or print usage if flag -h is passed
-    if [ "$#" -ne 2 ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
-        echo "Diff two yaml files"
-        echo "Usage: diffyaml <file1> <file2>"
-        echo "  --help, -h: Print this help message"
-        return 1
-    fi
-    diff --color <(yq -P 'sort_keys(..)' -o=props $1) <(yq -P 'sort_keys(..)' -o=props $2)
-}
-
 
 alias gdt='git difftool'
 
