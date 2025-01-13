@@ -17,6 +17,13 @@ installDnf() {
     sudo dnf install $packages
 }
 
+installYay() {
+    packages="$@"
+
+    echo "Installing packages with yay: $packages"
+    yay -S --needed $packages
+}
+
 curwd=$(pwd)
 commonPackages="{{ range .packages.linux.common -}}{{ . }} {{ end -}}"
 
@@ -24,6 +31,7 @@ commonPackages="{{ range .packages.linux.common -}}{{ . }} {{ end -}}"
 krewPackages="{{ range .packages.linux.krew -}}{{ . }} {{ end -}}"
 aptPackages="{{ range .packages.linux.apt -}}{{ . }} {{ end -}}"
 dnfPackages="{{ range .packages.linux.dnf -}}{{ . }} {{ end -}}"
+yayPackages="{{ range .packages.linux.yay -}}{{ . }} {{ end -}}"
 
 echo "Installing native packages"
 
@@ -31,6 +39,8 @@ if command -v apt-get > /dev/null; then
     installApt $aptPackages $commonPackages
 elif command -v dnf > /dev/null; then
     installDnf $dnfPackages $commonPackages
+elif command -v yay > /dev/null; then
+    installYay $yayPackages $commonPackages
 fi
 
 echo "Installing shellscript packages"

@@ -79,6 +79,7 @@ packages:
     apt: 
       - bashtop
     dnf: []
+    yay: []
     flatpak: []
     # packages that have the same name in all package managers
     common:
