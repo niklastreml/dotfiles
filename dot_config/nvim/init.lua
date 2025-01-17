@@ -298,6 +298,18 @@ require('lazy').setup({
       vim.g.copilot_no_tab_map = true
     end
   },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "github/copilot.vim" },                       -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+    build = "make tiktoken",                          -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
 
   {
     -- Autocompletion
@@ -741,6 +753,9 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
+  -- Copilot stuff
+  nmap('<leader>cc', require("CopilotChat").toggle, '[C]opilot [C]hat')
+
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -749,7 +764,7 @@ end
 
 -- document existing key chains
 require('which-key').add {
-  { "<leader>c",  group = "[C]ode" },
+  { "<leader>c",  group = "[C]opilot" },
   { "<leader>c_", hidden = true },
   { "<leader>d",  group = "[D]ebugger" },
   { "<leader>d_", hidden = true },
