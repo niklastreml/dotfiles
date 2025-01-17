@@ -5,10 +5,17 @@ sourceIfExists () {
 	test -f $1 && source $1
 }
 
-sourceIfExists $HOME/.env
+export EDITOR=nvim
+
+export GOBIN=$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/go/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 export ZPLUG_HOME=$HOME/.zplug
-
-
+sourceIfExists $HOME/.env
 
 
 HISTFILE=~/.zsh_history
@@ -19,14 +26,6 @@ if  command -v nix &> /dev/null; then
 	source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 fi
 
-export EDITOR=nvim
-
-export GOBIN=$HOME/.local/bin
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/scripts
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
 test -f "/home/linuxbrew/.linuxbrew/bin/brew shellenv" && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

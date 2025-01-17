@@ -64,6 +64,12 @@ packages:
         steps:
           - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           - rustup update
+      - name: fzf
+        steps: 
+          - FZF_VERSION=0.57.0
+          - curl -Lo fzf.tar.gz https://github.com/junegunn/fzf/releases/download/v$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tar.gz
+          - tar xvzf fzf.tar.gz
+          - cp fzf ~/.local/bin/fzf
     rustSrc:
       - eza
     goSrc:
@@ -95,5 +101,4 @@ packages:
       - ddd
       - neovim
       - tmux
-      - fzf
       - bat
