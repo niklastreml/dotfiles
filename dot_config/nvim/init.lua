@@ -471,6 +471,20 @@ require('lazy').setup({
         hl_mode = "combine",
       }
     }
+  },
+  {
+    "harrisoncramer/gitlab.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "stevearc/dressing.nvim",                                 -- Recommended but not required. Better UI for pickers.
+      "nvim-tree/nvim-web-devicons",                            -- Recommended but not required. Icons in discussion tree.
+    },
+    build = function() require("gitlab.server").build(true) end, -- Builds the Go binary
+    config = function()
+      require("gitlab").setup()
+    end,
   }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -778,6 +792,8 @@ require('which-key').add {
   { "<leader>l_", hidden = true },
   { "<leader>w",  group = "[W]orkspace" },
   { "<leader>w_", hidden = true },
+  { "gl",  group = "[G]it[L]ab" },
+  { "gl_", hidden = true },
 }
 
 
