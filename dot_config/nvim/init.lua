@@ -170,12 +170,8 @@ require('lazy').setup({
       workspaces = {
         {
           name = "internal",
-          path = "~/code/docs/internal",
-        },
-        {
-          name = "personal",
-          path = "~/code/docs/personal",
-        },
+          path = "~/code/docs",
+        }
       },
 
       -- see below for full list of options 👇
@@ -472,19 +468,36 @@ require('lazy').setup({
       }
     }
   },
+  "sindrets/diffview.nvim",
   {
     "harrisoncramer/gitlab.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
-      "stevearc/dressing.nvim",                                 -- Recommended but not required. Better UI for pickers.
-      "nvim-tree/nvim-web-devicons",                            -- Recommended but not required. Icons in discussion tree.
+      "stevearc/dressing.nvim",                                  -- Recommended but not required. Better UI for pickers.
+      "nvim-tree/nvim-web-devicons",                             -- Recommended but not required. Icons in discussion tree.
     },
     build = function() require("gitlab.server").build(true) end, -- Builds the Go binary
     config = function()
       require("gitlab").setup()
     end,
+  },
+
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig",         -- optional
+    },
+    opts = {
+      conceal = {
+        enabled = true, -- can be toggled by commands
+      },
+    } -- your configuration
   }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -770,6 +783,10 @@ local on_attach = function(_, bufnr)
   -- Copilot stuff
   nmap('<leader>cc', require("CopilotChat").toggle, '[C]opilot [C]hat')
 
+  -- Diffview
+  nmap('<leader>dvo', require("diffview").open, '[D]iff[V]iew Open')
+  nmap('<leader>dvc', require("diffview").open, '[D]iff[V]iew [C]lose')
+
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -792,8 +809,10 @@ require('which-key').add {
   { "<leader>l_", hidden = true },
   { "<leader>w",  group = "[W]orkspace" },
   { "<leader>w_", hidden = true },
-  { "gl",  group = "[G]it[L]ab" },
-  { "gl_", hidden = true },
+  { "gl",         group = "[G]it[L]ab" },
+  { "gl_",        hidden = true },
+  { "dv",         group = "[D]iff[V]iew" },
+  { "dv_",        hidden = true },
 }
 
 

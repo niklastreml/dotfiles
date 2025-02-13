@@ -56,7 +56,7 @@ packages:
           - cp -r output $HOME/.local/bin/odinlang
       - name: golang
         steps:
-          - GO_VERSION=1.23.4
+          - GO_VERSION=1.24.0
           - mkdir -p $HOME/.local/go
           - curl -Lo go.tar.gz "https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz"
           - tar -C $HOME/.local/go -xzf go.tar.gz --strip-components=1
