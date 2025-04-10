@@ -1,0 +1,6 @@
+tmux new-session -d 'zsh'
+tmux new-window 'zsh'
+tmux send-keys -t 1 'nvim .' Enter
+tmux new-window 'zsh'
+tmux select-window -t 1
+tmux -2 attach-session -d
