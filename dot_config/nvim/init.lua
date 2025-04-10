@@ -468,7 +468,18 @@ require('lazy').setup({
       }
     }
   },
-  "sindrets/diffview.nvim",
+  {
+    "sindrets/diffview.nvim",
+    config = function()
+      require("diffview").setup({
+        view = {
+          default = {
+            layout = "diff2_horizontal"
+          }
+        }
+      })
+    end
+  },
   {
     "harrisoncramer/gitlab.nvim",
     dependencies = {
@@ -497,7 +508,7 @@ require('lazy').setup({
       conceal = {
         enabled = true, -- can be toggled by commands
       },
-    } -- your configuration
+    }                   -- your configuration
   }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -766,7 +777,13 @@ local on_attach = function(_, bufnr)
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
   nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
   nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, '[S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  nmap('<leader>fs', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[F]ind [S]ymbols')
+
+  -- Tab keymaps
+  nmap('<leader>tn', vim.cmd.tabnext, '[N]ext [T]ab')
+  nmap('<leader>tp', vim.cmd.tabprevious, '[P]revious [T]ab')
+  nmap('<leader>tn', vim.cmd.tabnew, '[N]ew [T]ab')
+  nmap('<leader>tx', vim.cmd.tabclose, 'Close [T]ab')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -809,6 +826,8 @@ require('which-key').add {
   { "<leader>l_", hidden = true },
   { "<leader>w",  group = "[W]orkspace" },
   { "<leader>w_", hidden = true },
+  { "<leader>t",  group = "[T]abs" },
+  { "<leader>t_", hidden = true },
   { "gl",         group = "[G]it[L]ab" },
   { "gl_",        hidden = true },
   { "dv",         group = "[D]iff[V]iew" },

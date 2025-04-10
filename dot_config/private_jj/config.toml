@@ -1,0 +1,21 @@
+[user]
+name = "Niklas Treml"
+email = "niklas.treml@telekom.de"
+[git]
+subprocess = true
+
+[ui]
+default-command = "log"
+diff.tool = ["difft", "--color=always", "$left", "$right"]
+merge-editor = "nvimdiff"
+conflict-marker-style = "git"
+
+[merge-tools.nvimdiff]
+diff-invocation-mode = "file-by-file"
+merge-args = ["-f", "-d", "$output", "-M",
+    "$left", "$base", "$right",
+    "-c", "wincmd J", "-c", "set modifiable",
+    "-c", "set write"]
+program = "nvim"
+merge-tool-edits-conflict-markers = true    # See below for an explanation
+
