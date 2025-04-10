@@ -7,7 +7,7 @@ installApt() {
     sudo add-apt-repository ppa:bashtop-monitor/bashtop
     echo "Installing packages with apt-get: $packages"
     sudo apt-get update
-    sudo apt-get install $packages
+    sudo apt-get install -y $packages
 }
 
 installDnf() {
