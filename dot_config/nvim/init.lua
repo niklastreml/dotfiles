@@ -170,8 +170,12 @@ require('lazy').setup({
       workspaces = {
         {
           name = "internal",
-          path = "~/code/docs",
-        }
+          path = "~/code/docs/internal",
+        },
+        {
+          name = "personal",
+          path = "~/code/.notes",
+        },
       },
 
       -- see below for full list of options 👇
@@ -469,18 +473,6 @@ require('lazy').setup({
     }
   },
   {
-    "sindrets/diffview.nvim",
-    config = function()
-      require("diffview").setup({
-        view = {
-          default = {
-            layout = "diff2_horizontal"
-          }
-        }
-      })
-    end
-  },
-  {
     "harrisoncramer/gitlab.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -494,21 +486,11 @@ require('lazy').setup({
       require("gitlab").setup()
     end,
   },
-
   {
-    "luckasRanarison/tailwind-tools.nvim",
-    name = "tailwind-tools",
-    build = ":UpdateRemotePlugins",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim", -- optional
-      "neovim/nvim-lspconfig",         -- optional
-    },
-    opts = {
-      conceal = {
-        enabled = true, -- can be toggled by commands
-      },
-    }                   -- your configuration
+    'chomosuke/typst-preview.nvim',
+    lazy = false, -- or ft = 'typst'
+    version = '1.*',
+    opts = {},  -- lazy.nvim will implicitly calls `setup {}`
   }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -777,13 +759,7 @@ local on_attach = function(_, bufnr)
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
   nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
   nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, '[S]ymbols')
-  nmap('<leader>fs', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[F]ind [S]ymbols')
-
-  -- Tab keymaps
-  nmap('<leader>tn', vim.cmd.tabnext, '[N]ext [T]ab')
-  nmap('<leader>tp', vim.cmd.tabprevious, '[P]revious [T]ab')
-  nmap('<leader>tn', vim.cmd.tabnew, '[N]ew [T]ab')
-  nmap('<leader>tx', vim.cmd.tabclose, 'Close [T]ab')
+  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -799,10 +775,6 @@ local on_attach = function(_, bufnr)
 
   -- Copilot stuff
   nmap('<leader>cc', require("CopilotChat").toggle, '[C]opilot [C]hat')
-
-  -- Diffview
-  nmap('<leader>dvo', require("diffview").open, '[D]iff[V]iew Open')
-  nmap('<leader>dvc', require("diffview").open, '[D]iff[V]iew [C]lose')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -826,12 +798,8 @@ require('which-key').add {
   { "<leader>l_", hidden = true },
   { "<leader>w",  group = "[W]orkspace" },
   { "<leader>w_", hidden = true },
-  { "<leader>t",  group = "[T]abs" },
-  { "<leader>t_", hidden = true },
   { "gl",         group = "[G]it[L]ab" },
   { "gl_",        hidden = true },
-  { "dv",         group = "[D]iff[V]iew" },
-  { "dv_",        hidden = true },
 }
 
 
