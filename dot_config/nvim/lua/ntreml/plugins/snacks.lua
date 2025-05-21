@@ -5,6 +5,7 @@ return {
         lazy = false,
         opts = {
             indent = { enabled = true },
+            image = { enabled = true },
         }
     }
 }

@@ -7,12 +7,12 @@ return {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
-        config = function ()
+        config = function()
             local wk = require("which-key")
             wk.add({
-                {"<leader>f", group = "Find"},
-                {"<leader>l", group = "LSP"},
-                {"<leader>g", group = "Goto"},
+                { "<leader>f", group = "Find" },
+                { "<leader>l", group = "LSP" },
+                { "<leader>g", group = "Goto" },
             })
         end
     }

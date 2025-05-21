@@ -1,4 +1,3 @@
-
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
 vim.wo.number = true
@@ -31,11 +30,11 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 vim.filetype.add({
-  extension = {
-    templ = "templ",
-  },
+    extension = {
+        templ = "templ",
+    },
 })
 
 vim.diagnostic.config({
-  virtual_text = true,
+    virtual_text = true,
 })
