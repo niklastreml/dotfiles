@@ -1,8 +1,6 @@
 [user]
 name = "Niklas Treml"
 email = "niklas.treml@telekom.de"
-[git]
-subprocess = true
 
 [ui]
 default-command = "log"
