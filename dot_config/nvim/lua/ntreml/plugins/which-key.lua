@@ -13,6 +13,7 @@ return {
                 { "<leader>f", group = "Find" },
                 { "<leader>l", group = "LSP" },
                 { "<leader>g", group = "Goto" },
+                { "<leader>a", group = "AI✨" },
             })
         end
     }
