@@ -145,6 +145,8 @@ esac
 # pnpm end
 
 alias open xdg-open
+export MAKEFLAGS="-j$(nproc)"
+
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
