@@ -25,7 +25,7 @@ return {
     --- The below dependencies are optional,
     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-    "stevearc/dressing.nvim", -- for input provider dressing
+    -- "stevearc/dressing.nvim", -- for input provider dressing
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
     "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
