@@ -19,6 +19,8 @@
 [includeIf "hasconfig:remote.*.url:https://{{ .gitlab.host }}/**"]
     path = .gitconfig-work
 
+[difftool "nvimdiff"]
+    cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [diff]
 	tool = nvimdiff

@@ -7,3 +7,5 @@
         main-branch = "main"
         hosting-platform = "gitlab"
         hosting-origin-hostname = {{ .gitlab.host | quote }}
+[url "git@{{ .gitlab.host }}:"]
+	insteadOf = https://{{ .gitlab.host }}/

@@ -29,6 +29,8 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
+vim.g.blamer_enabled = true
+
 vim.filetype.add({
     extension = {
         templ = "templ",
