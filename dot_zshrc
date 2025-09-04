@@ -5,13 +5,13 @@ sourceIfExists () {
 	test -f $1 && source $1
 }
 
-export EDITOR=nvim
 
 export GOBIN=$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/go/bin
+export PATH=$PATH:$HOME/.local/nvim/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export ZPLUG_HOME=$HOME/.zplug
@@ -117,7 +117,8 @@ then
 fi
 if  command -v nvim &> /dev/null
 then
-		alias vim='nvim'
+        alias vim='nvim'
+        export EDITOR=nvim
 fi
 
 if command -v jj &> /dev/null
