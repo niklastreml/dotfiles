@@ -1,1 +1,1 @@
-ln -f monitors-$(hostname).conf monitors.conf
+ln -s -f  ~/.config/hypr/monitors-$(hostname).conf ~/.config/hypr/monitors.conf
