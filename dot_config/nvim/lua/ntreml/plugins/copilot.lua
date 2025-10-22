@@ -1,3 +1,5 @@
+return {}
+--[[
 return {
     "zbirenbaum/copilot.lua",
     config = function()
@@ -14,3 +16,4 @@ return {
         )
     end,
 }
+]]
