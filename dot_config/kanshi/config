@@ -1,9 +1,0 @@
-profile docked {
-  output "eDP-1" enable position 0,0
-  output "DP-7" enable position 2880,0
-  output "DP-8" enable position 4800,0
-}
-
-profile undocked {
-  output "eDP-1" enable position 0,0
-}
