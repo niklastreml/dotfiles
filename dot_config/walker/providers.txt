@@ -1,0 +1,6 @@
+elephant-bluetooth
+elephant-calc
+elephant-clipboard
+elephant-files
+elephant-symbols
+elephant-websearch
