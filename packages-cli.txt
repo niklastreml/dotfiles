@@ -26,6 +26,7 @@ kind
 krew
 kubectl
 neovim
+ninja
 ripgrep
 starship
 tmux
