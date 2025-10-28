@@ -41,6 +41,10 @@ vim.diagnostic.config({
     virtual_text = true,
 })
 
+vim.lsp.config("html", {
+    filetypes = { "html", "templ" }
+})
+
 if vim.g.neovide then
     vim.o.guifont = "FiraCode Nerd Font:h11"
 end
