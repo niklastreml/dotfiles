@@ -12,6 +12,7 @@ set -g -x CMAKE_BUILD_PARALLEL_LEVEL $(nproc)
 
 bind tab complete-and-search
 bind ctrl-j forward-char
+bind ctrl-h backward-kill-path-component
 
 set -g -x EDITOR nvim
 set -g -x TERMINAL ghostty
