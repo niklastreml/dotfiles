@@ -45,6 +45,25 @@ vim.lsp.config("html", {
     filetypes = { "html", "templ" }
 })
 
+vim.lsp.config("gopls", {
+    settings = {
+        gopls = {
+            hints = {
+                assignVariableTypes    = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes  = true,
+                constantValues         = true,
+                functionTypeParameters = true,
+                ignoredError           = true,
+                parameterNames         = true,
+                rangeVariableTypes     = true,
+            }
+        }
+    }
+})
+
+vim.lsp.inlay_hint.enable(true)
+
 if vim.g.neovide then
     vim.o.guifont = "FiraCode Nerd Font:h11"
 end

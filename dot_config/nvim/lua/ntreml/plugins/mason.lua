@@ -5,10 +5,11 @@ return {
     },
     {
         "mason-org/mason-lspconfig.nvim",
-        opts = {},
+        opts = {
+            ensure_installed = { "lua_ls", "rust_analyzer" },
+        },
         dependencies = {
             { "mason-org/mason.nvim", opts = {} },
-            { 'j-hui/fidget.nvim',    opts = {} },
             "neovim/nvim-lspconfig",
         },
     }

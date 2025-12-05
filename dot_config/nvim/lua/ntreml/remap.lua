@@ -12,6 +12,9 @@ vim.keymap.set("n", '<leader>lf', vim.lsp.buf.format, { desc = '[F]ormat' })
 vim.keymap.set("n", '<leader>li', vim.lsp.buf.implementation, { desc = '[I]mplementation' })
 vim.keymap.set("n", '<leader>lc', vim.lsp.buf.incoming_calls, { desc = 'Incoming [C]alls' })
 vim.keymap.set("n", '<leader>lR', vim.lsp.buf.references, { desc = '[R]eferences' })
+vim.keymap.set("n", '<leader>lh', function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = 'Toggle Inlay [H]ints' })
 
 -- Diagnostics
 vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, { desc = 'Open floating [d]iagnostic message' })

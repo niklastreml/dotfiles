@@ -3,6 +3,8 @@ if status is-interactive
 end
 
 source $HOME/.env.fish
+test -f $HOME/.config/fish/completions/kubectl_aliases.fish && source $HOME/.config/fish/completions/kubectl_aliases.fish
+
 starship init fish | source
 set -g -x CMAKE_EXPORT_COMPILE_COMMANDS ON
 if type -q ninja
@@ -23,3 +25,7 @@ fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.local/go/bin
 fish_add_path $HOME/.local/nvim/bin
 fish_add_path $HOME/.local/krew/bin
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
