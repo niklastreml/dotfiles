@@ -4,6 +4,7 @@ end
 
 source $HOME/.env.fish
 test -f $HOME/.config/fish/completions/kubectl_aliases.fish && source $HOME/.config/fish/completions/kubectl_aliases.fish
+set -q KREW_ROOT; and set -gx PATH $PATH $KREW_ROOT/.krew/bin; or set -gx PATH $PATH $HOME/.krew/bin
 
 starship init fish | source
 set -g -x CMAKE_EXPORT_COMPILE_COMMANDS ON
@@ -12,9 +13,11 @@ if type -q ninja
 end
 set -g -x CMAKE_BUILD_PARALLEL_LEVEL $(nproc)
 
-bind tab complete-and-search
-bind ctrl-j forward-char
-bind ctrl-h backward-kill-path-component
+function fish_user_key_bindings
+    bind tab complete-and-search
+    bind ctrl-j forward-char
+    bind ctrl-h backward-kill-path-component
+end 
 
 set -g -x EDITOR nvim
 set -g -x TERMINAL ghostty
