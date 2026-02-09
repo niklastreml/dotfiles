@@ -9,6 +9,7 @@ return {
             image = { enabled = false },
             input = { enabled = true },
             picker = { enabled = true },
+            quickfile = { enabled = true },
         }
     }
 }
