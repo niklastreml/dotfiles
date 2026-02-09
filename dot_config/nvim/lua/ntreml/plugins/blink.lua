@@ -1,5 +1,4 @@
 return {
-    {
         'saghen/blink.cmp',
         -- optional: provides snippets for the snippet source
         dependencies = { 'rafamadriz/friendly-snippets' },
@@ -11,6 +10,7 @@ return {
         -- build = 'cargo build --release',
         -- If you use nix, you can build from source using latest nightly rust with:
         -- build = 'nix run .#build-plugin',
+        event = "InsertEnter",
 
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
@@ -58,5 +58,4 @@ return {
             signature = { enabled = true }
         },
         opts_extend = { "sources.default" }
-    }
 }

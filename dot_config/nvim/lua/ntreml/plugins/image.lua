@@ -5,6 +5,7 @@ if is_wql then
 else
     return {
         "3rd/image.nvim",
+        event = "VeryLazy",
         config = function()
             require("image").setup()
         end,
