@@ -65,7 +65,7 @@ vim.lsp.config("gopls", {
     }
 })
 
-vim.lsp.inlay_hint.enable(true)
+vim.lsp.inlay_hint.enable(false)
 
 if vim.g.neovide then
     vim.o.guifont = "FiraCode Nerd Font:h11"

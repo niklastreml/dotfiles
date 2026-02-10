@@ -14,7 +14,7 @@ SETUVAR _fisher_plugins:acomagu/fish\x2dasync\x2dprompt\x1epatrickf1/fzf\x2efish
 SETUVAR _fisher_reitzig_2F_sdkman_2D_for_2D_fish_40_v2_2E_31_2E_30__files:\x7e/\x2econfig/fish/functions/sdk\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/sdk\x2efish\x1e\x7e/\x2econfig/fish/completions/sdk\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _fisher_woheedev_2F_onedark_2D_fish_files:\x7e/\x2econfig/fish/themes/One\x20Dark\x2etheme
-SETUVAR fish_user_paths:/home/ntreml/\x2elocal/go/bin\x1e/home/ntreml/\x2elocal/bin\x1e/home/ntreml/\x2ecargo/bin\x1e/home/ntreml/\x2elocal/nvim/bin\x1e/usr/bin
+SETUVAR fish_user_paths:/home/ntreml/\x2efly/bin\x1e/home/ntreml/\x2elocal/go/bin\x1e/home/ntreml/\x2elocal/bin\x1e/home/ntreml/\x2ecargo/bin\x1e/home/ntreml/\x2elocal/nvim/bin\x1e/usr/bin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
 SETUVAR pure_color_at_sign:pure_color_mute

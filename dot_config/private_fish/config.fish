@@ -11,6 +11,11 @@ set -g -x CMAKE_EXPORT_COMPILE_COMMANDS ON
 if type -q ninja
     set -g -x CMAKE_GENERATOR Ninja
 end
+if type -q zoxide
+    zoxide init fish | source
+    alias j=z
+end
+
 set -g -x CMAKE_BUILD_PARALLEL_LEVEL $(nproc)
 
 function fish_user_key_bindings
