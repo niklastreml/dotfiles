@@ -1,0 +1,49 @@
+# ==========================================
+# 1. Fish junk
+# ==========================================
+# NEVER sync Fish's universal variables or history across different OSes!
+.config/fish/fish_variables
+.local/share/fish/fish_history
+.local/share/fish/generated_completions/
+
+# ==========================================
+# 2. Universal OS Junk & Caches
+# ==========================================
+**/.DS_Store
+**/*~
+**/*.swp
+.cache/
+.npm/
+.wget-hsts
+.lesshst
+
+# ==========================================
+# 3. Shell History & Local State
+# ==========================================
+.bash_history
+.zsh_history
+.zsh_sessions/
+.local/state/
+.local/share/nvim/shada/
+
+# ==========================================
+# 4. OS-Specific Conditional Ignores
+# ==========================================
+
+{{ if eq .chezmoi.os "darwin" }}
+# --- IGNORE THESE ON MAC ---
+# Linux desktop environments and Wayland tools
+.config/hypr/
+.config/waybar/
+.config/wofi/
+.config/walker/
+.config/batsignal/
+.config/hyprpaper/
+{{ end }}
+
+{{ if eq .chezmoi.os "linux" }}
+# --- IGNORE THESE ON LINUX ---
+# macOS specific tools
+.config/aerospace/
+Library/
+{{ end }}
