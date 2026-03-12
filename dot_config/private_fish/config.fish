@@ -2,6 +2,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+if test (uname) = "Darwin"
+    alias nproc="sysctl -n hw.logicalcpu"
+end
+
 source $HOME/.env.fish
 test -f $HOME/.config/fish/completions/kubectl_aliases.fish && source $HOME/.config/fish/completions/kubectl_aliases.fish
 set -q KREW_ROOT; and set -gx PATH $PATH $KREW_ROOT/.krew/bin; or set -gx PATH $PATH $HOME/.krew/bin
