@@ -1,1 +1,1 @@
-ln -f  ~/.config/hypr/monitors-$(hostname).conf ~/.config/hypr/monitors.conf
+ln -f  ~/.config/hypr/monitors-$(hostname).lua ~/.config/hypr/monitors.lua
