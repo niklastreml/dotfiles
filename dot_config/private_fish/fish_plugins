@@ -3,8 +3,5 @@ patrickf1/fzf.fish
 jhillyerd/plugin-git
 ahmetb/kubectl-aliases
 budimanjojo/tmux.fish
-reitzig/sdkman-for-fish@v2.1.0
 woheedev/onedark-fish
-jorgebucaran/nvm.fish
 kidonng/nix.fish
-berk-karaal/loadenv.fish

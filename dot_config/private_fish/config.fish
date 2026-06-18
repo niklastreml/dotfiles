@@ -2,10 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-if test (uname) = "Darwin"
-    alias nproc="sysctl -n hw.logicalcpu"
-end
-
 source $HOME/.env.fish
 test -f $HOME/.config/fish/completions/kubectl_aliases.fish && source $HOME/.config/fish/completions/kubectl_aliases.fish
 set -q KREW_ROOT; and set -gx PATH $PATH $KREW_ROOT/.krew/bin; or set -gx PATH $PATH $HOME/.krew/bin
@@ -37,7 +33,11 @@ fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.local/go/bin
 fish_add_path $HOME/.local/nvim/bin
 fish_add_path $HOME/.local/krew/bin
+fish_add_path /opt/shader-slang-bin/bin/
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# opencode
+fish_add_path /home/ntreml/.opencode/bin
